@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&J Tutoring // Tura</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body, html {
+            background-color: #fcfcfc;
+            overflow-y: auto;
+            min-height: 100vh;
+        }
+        .split-container {
+            display: flex;
+            width: 100vw;
+            min-height: calc(100vh + 50px);
+            flex-direction: column;
+            position: relative;
+        }
+        @media (min-width: 768px) {
+            .split-container {
+                flex-direction: row;
+                height: 100vh;
+            }
+        }
+        .side {
+            padding: 5.6rem 2.8rem 5rem 2.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            min-height: 50vh;
+        }
+        @media (min-width: 768px) {
+            .side {
+                width: 50vw;
+                height: 100vh;
+                padding: 7.5rem 4.5rem 3.7rem 4.5rem;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+            .split-container:hover .side { width: 40vw; opacity: 0.5; }
+            .side:hover { width: 60vw !important; opacity: 1 !important; }
+        }
+        .side-mj { background-color: #ffffff; color: #1a1a1a; }
+        .side-mj::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('Flyer (1).jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.03;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .side-tura { background-color: #0b111e; color: #ffffff; }
+        .side-tura { min-height: calc(100vh + 50px); }
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 730px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+        .logo-container {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 1.2rem;
+            align-self: flex-start;
+        }
+        .logo-img, .tura-logo-img {
+            max-width: 100%;
+            object-fit: contain;
+            object-position: left;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .logo-img { max-height: 180px; }
+        .tura-logo-img { max-height: 180px; }
+        .logo-img:hover, .tura-logo-img:hover { transform: scale(1.03); opacity: 0.95; }
+        h1 {
+            font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        .side-mj h1 { color: #9E2A2B; }
+        .side-mj .logo-container { margin-bottom: 1.2rem; }
+        .side-mj .badge { margin-bottom: 0.8rem; }
+        .side-mj h1 { margin-bottom: 1rem; }
+        .side-mj p { margin-bottom: 1.4rem; }
+        .side-mj .cta-box { margin-top: 0.8rem; padding: 1.4rem; }
+        p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: #555555;
+            margin-bottom: 1.4rem;
+            font-weight: 400;
+        }
+        .side-tura p { color: #a1a1aa; }
+        .badge {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.03rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .badge-mj { background: #fff0f0; color: #9E2A2B; }
+        .badge-tura { background: rgba(0, 168, 107, 0.15); color: #20c997; }
+        .cta-box {
+            padding: 1.4rem;
+            border-radius: 12px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+        .side-mj .cta-box { background: #f9f9f9; }
+        .side-tura .cta-box { background: #151e2e; cursor: pointer; transition: transform 0.2s ease; }
+        .side-tura .cta-box:hover { transform: translateY(-2px); }
+        .cta-title {
+            font-size: 0.98rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888888;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .side-tura .cta-title { color: #6b7280; }
+        .action-link {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        .action-link:hover { color: #9E2A2B; text-decoration: underline; text-underline-offset: 4px; }
+        .side-tura .cta-value { font-size: 1.5rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; }
+        .subtext { font-weight: 400; font-size: 1.18rem; color: #666; margin-top: 0.5rem; }
+        .bold-text { font-weight: 700; color: #9E2A2B; }
+        .founder-badge {
+            position: absolute;
+            top: 1.9rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            color: #1a1a1a;
+            padding: 0.85rem 1.1rem 0.85rem 2.1rem;
+            border-radius: 50px;
+            font-size: 1.03rem;
+            font-weight: 700;
+            z-index: 100;
+            border: 1px solid #eaeaea;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .founder-badge:hover { transform: translateX(-50%) translateY(-2px); box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
+        .founder-name { color: #9E2A2B; }
+        .linkedin-btn {
+            background-color: #0a66c2;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.55rem 1.3rem;
+            border-radius: 50px;
+            font-size: 0.94rem;
+            letter-spacing: 0.05em;
+            transition: background-color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .linkedin-btn:hover { background-color: #004182; }
+        @media (max-width: 767px) {
+            .side { height: auto; min-height: 50vh; }
+            .content { align-items: center; text-align: center; }
+            .logo-container { align-self: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="split-container">
+        <div class="founder-badge">
+            <span>Founded by <span class="founder-name">Madhav Jhunjhunwala</span></span>
+            <a href="https://www.linkedin.com/in/madhavjhunjhunwala" target="_blank" class="linkedin-btn">
+                Connect on LinkedIn ↗
+            </a>
+        </div>
+        <section class="side side-mj">
+            <div class="content">
+                <div class="logo-container">
+                    <img class="logo-img" src="M&J Logo Black.png" alt="M&J Tutoring Logo">
+                </div>
+                <span class="badge badge-mj">Northern Virginia & Online</span>
+                <h1><span class="bold-text">Private Lessons</span>. Guaranteed Success.</h1>
+                <p>Expert tutoring in Math, Science & English from specialized Academy of Science (AOS) and college instructors. Personalized pacing for elementary through high school. We ensure every student succeeds through tailored instruction and continuous progress tracking.</p>
+                <div class="cta-box">
+                    <div class="cta-title">Book Your Session</div>
+                    <a href="tel:5714368215" class="action-link">
+                        Click to Call: 571-436-8215
+                    </a>
+                    <a href="mailto:mjtutoringdmv@gmail.com" class="action-link">
+                        Email: mjtutoringdmv@gmail.com
+                    </a>
+                    <div class="subtext">• Free initial consultation</div>
+                </div>
+            </div>
+        </section>
+        <section class="side side-tura">
+            <div class="content">
+                <div class="logo-container">
+                    <img class="tura-logo-img" src="Gemini_Generated_Image_1s4lfh1s4lfh1s4l-removebg-preview.png" alt="Tura Logo">
+                </div>
+                <span class="badge badge-tura">All in One Solution</span>
+                <h1>Software for tutors. Built simple.</h1>
+                <p>Tura is the all-in-one platform for tutors and tutoring businesses. Manage scheduling, billing, and operations seamlessly. Students and parents get an integrated LMS with assignments, progress tracking, grades, and direct communication all in one place. Whether solo or a team, Tura streamlines everything while keeping everyone engaged. Built with support from grants and VC funding, our mission is to become the go-to platform for education management.
+                </p>
+                <div class="cta-box">
+                    <div class="cta-title">Platform Status</div>
+                    <div class="cta-value" style="color: #20c997;">Beta coming soon - early access rolling out to select tutors.</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html> 
+
