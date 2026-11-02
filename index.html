@@ -222,6 +222,23 @@
                     <a href="tel:5714368215" class="action-link">
                         Click to Call: 571-436-8215
                     </a>
+                    <!-- Google Calendar Appointment Scheduling begin -->
+<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+<script>
+(function() {
+  var target = document.currentScript;
+  window.addEventListener('load', function() {
+    calendar.schedulingButton.load({
+      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1eArqkaVPP5YEJ0-v77XN5JBvqRzwAuUbrH5CVEPYBJMxghO0dbkgPrEKSRi9Mf0_Ca0lg4-Ud?gv=true',
+      color: '#039BE5',
+      label: 'Book an appointment',
+      target,
+    });
+  });
+})();
+</script>
+<!-- end Google Calendar Appointment Scheduling -->
                     <a href="mailto:mjtutoringdmv@gmail.com" class="action-link">
                         Email: mjtutoringdmv@gmail.com
                     </a>
